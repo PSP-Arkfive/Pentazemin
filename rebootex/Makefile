@@ -1,7 +1,8 @@
 PSPSDK=$(shell psp-config --pspsdk-path)
 REBOOTEXDIR ?= ../../BootLoadEx
+ARKSDK ?= ../external
 
-INCDIR = $(PSPSDK)/include ../external/include $(REBOOTEXDIR)
+INCDIR = $(PSPSDK)/include $(ARKSDK)/include $(REBOOTEXDIR)
 TARGET = reboot.bin.gz
 
 PYTHON=$(shell which python3)
