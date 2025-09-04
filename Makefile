@@ -43,5 +43,4 @@ LIBS = -lpspsystemctrl_kernel
 
 PSP_FW_VERSION = 660
 
-PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
