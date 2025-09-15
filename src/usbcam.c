@@ -261,7 +261,7 @@ int sceUsbCamWaitReadVideoFrameEnd_Patched()
     return res;
 }
 
-void patchUsbCam(SceModule2* mod){
+void patchUsbCam(SceModule* mod){
     REDIRECT_FUNCTION(sctrlHENFindFunction(mod->modname, "sceUsbCam", 0x0A41A298), sceUsbCamSetupStillEx_Patched);
     REDIRECT_FUNCTION(sctrlHENFindFunction(mod->modname, "sceUsbCam", 0xCFE9E999), sceUsbCamSetupVideoEx_Patched);
     REDIRECT_FUNCTION(sctrlHENFindFunction(mod->modname, "sceUsbCam", 0x2E930264), sceUsbCamSetupMicEx_Patched);

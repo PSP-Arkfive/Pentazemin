@@ -5,7 +5,7 @@
 
 #include <module2.h>
 
-SceModule2* patchLoaderCore(void);
+SceModule* patchLoaderCore(void);
 int AdrenalinePatchInit(int (* module_bootstart)(SceSize, void *), void *argp);
 
 #endif

@@ -87,10 +87,10 @@ int AdrenalinePatchInit(int (* module_bootstart)(SceSize, void *), void *argp) {
 }
 
 // Patch Loader Core Module
-SceModule2* patchLoaderCore(void)
+SceModule* patchLoaderCore(void)
 {
     // Find Module
-    SceModule2* mod = (SceModule2 *)sceKernelFindModuleByName("sceLoaderCore");
+    SceModule* mod = (SceModule *)sceKernelFindModuleByName("sceLoaderCore");
 
     memcpy(flash_files, (void*)0x08800100, sizeof(SonyFlashFiles));
 

@@ -175,7 +175,7 @@ int memcmp_patched(const void *b1, const void *b2, size_t len) {
 }
 
 void PatchMemlmd() {
-    SceModule2 *mod = (SceModule2*)sceKernelFindModuleByName("sceMemlmd");
+    SceModule *mod = (SceModule*)sceKernelFindModuleByName("sceMemlmd");
     u32 text_addr = mod->text_addr;
 
     // Allow 6.61 kernel modules
@@ -226,7 +226,7 @@ int sceKernelResumeThreadPatched(SceUID thid) {
     return sceKernelResumeThread(thid);
 }
 
-void patch_GameBoot(SceModule2* mod){
+void patch_GameBoot(SceModule* mod){
     u32 p1 = 0;
     u32 p2 = 0;
     int patches = 2;
@@ -261,7 +261,7 @@ int sctrlGetUsbState() {
     return 2; // Not connected
 }
 
-void patch_SysconfPlugin(SceModule2* mod){
+void patch_SysconfPlugin(SceModule* mod){
     u32 text_addr = mod->text_addr;
     // Dummy all vshbridge usbstor functions
     _sw(0x24020001, text_addr + 0xCD78); // sceVshBridge_ED978848 - vshUsbstorMsSetWorkBuf
@@ -282,7 +282,7 @@ void patch_SysconfPlugin(SceModule2* mod){
     _sw(0, text_addr + 0xB264);
 }
 
-void patchPopsMan(SceModule2* mod){
+void patchPopsMan(SceModule* mod){
     u32 text_addr = mod->text_addr;
 
     // Use different mode for SceKermitPocs
@@ -294,7 +294,7 @@ void patchPopsMan(SceModule2* mod){
     _sw(0x3C014BCD, text_addr + 0x11B4);
 }
 
-void patchPops(SceModule2* mod){
+void patchPops(SceModule* mod){
     // Use different pops register location
     u32 i;
     for (i = 0; i < mod->text_size; i += 4) {
@@ -312,7 +312,7 @@ void exit_game_patched(){
         sctrlKernelExitVSH(NULL);
 }
 
-int AdrenalineOnModuleStart(SceModule2 * mod){
+int AdrenalineOnModuleStart(SceModule * mod){
 
     // System fully booted Status
     static int booted = 0;

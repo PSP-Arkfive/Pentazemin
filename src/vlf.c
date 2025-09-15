@@ -20,7 +20,7 @@
 #include <cfwmacros.h>
 
 // Fix VLF Module
-void patchVLF(SceModule2 * mod)
+void patchVLF(SceModule * mod)
 {
     // Flawed Function NIDs
     unsigned int patches[5] =
