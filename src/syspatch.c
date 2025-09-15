@@ -7,7 +7,7 @@
 #include <pspdisplay.h>
 
 #include <ark.h> 
-#include <kermit.h>
+#include <pspkermit.h>
 #include <cfwmacros.h>
 #include <rebootconfig.h>
 #include <systemctrl.h>
