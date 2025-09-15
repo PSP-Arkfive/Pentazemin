@@ -3,7 +3,7 @@
 
 #include <pspsdk.h>
 
-#include <module2.h>
+
 
 SceModule* patchLoaderCore(void);
 int AdrenalinePatchInit(int (* module_bootstart)(SceSize, void *), void *argp);
