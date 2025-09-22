@@ -1,8 +1,8 @@
 PSPSDK=$(shell psp-config --pspsdk-path)
-REBOOTEXDIR ?= ../../BootLoadEx
+BOOTLOADEX ?= ../../BootLoadEx
 ARKSDK ?= ../../ark-dev-sdk
 
-INCDIR = $(PSPSDK)/include $(ARKSDK)/include $(REBOOTEXDIR)
+INCDIR = $(PSPSDK)/include $(ARKSDK)/include $(BOOTLOADEX)
 TARGET = reboot.bin.gz
 
 PYTHON=$(shell which python3)
@@ -15,7 +15,7 @@ CC = psp-gcc
 LD = psp-ld
 STRIP = psp-strip
 OBJCOPY = psp-objcopy
-LINKFILE = $(REBOOTEXDIR)/linkfile.l
+LINKFILE = $(BOOTLOADEX)/linkfile.l
 
 REBOOT_OBJS = \
 	main.o \
@@ -25,7 +25,7 @@ REBOOT_OBJS = \
 
 C_OBJS = \
 	patches.o \
-	$(REBOOTEXDIR)/vita_rebootex/patches.o
+	$(BOOTLOADEX)/vita_rebootex/patches.o
 
 LIBS = -L $(ARKROOT)/libs
 
@@ -34,10 +34,10 @@ CFLAGS += -DDEBUG=$(DEBUG)
 LIBS += -lcolordebugger
 endif
 
-$(REBOOT_OBJS) : %.o : $(REBOOTEXDIR)/%.c
+$(REBOOT_OBJS) : %.o : $(BOOTLOADEX)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-crt0.o : $(REBOOTEXDIR)/crt0.S
+crt0.o : $(BOOTLOADEX)/crt0.S
 	$(CC) -I$(PSPSDK)/include -c $< -o crt0.o
 
 main.elf: crt0.o $(C_OBJS) $(REBOOT_OBJS)
