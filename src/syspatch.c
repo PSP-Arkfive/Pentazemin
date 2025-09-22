@@ -312,7 +312,7 @@ void exit_game_patched(){
         sctrlKernelExitVSH(NULL);
 }
 
-void AdrenalineOnModuleStart(SceModule * mod){
+int AdrenalineOnModuleStart(SceModule * mod){
 
     // System fully booted Status
     static int booted = 0;
@@ -462,7 +462,8 @@ flush:
     sctrlFlushCache();
 
     // Forward to previous Handler
-    if(previous) previous(mod);
+    if(previous) return previous(mod);
+    return 0;
 }
 
 void initAdrenalineSysPatch(){
