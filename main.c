@@ -24,7 +24,7 @@
 #include <systemctrl_se.h>
 #include <systemctrl_private.h>
 
-#include "rebootex/payload.h"
+#include <payload.h>
 
 PSP_MODULE_INFO("ARKCompatLayer", 0x1007, 1, 0);
 

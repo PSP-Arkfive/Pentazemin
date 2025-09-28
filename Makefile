@@ -25,7 +25,7 @@ ARKSDK ?= ../ark-dev-sdk
 
 all: $(TARGET).prx
 
-INCDIR = include $(ARKSDK)/include
+INCDIR = include $(ARKSDK)/include rebootex
 CFLAGS = -std=c99 -Os -G0 -Wall -fno-pic -fshort-wchar -mno-check-zero-division
 
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
