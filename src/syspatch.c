@@ -21,7 +21,7 @@
 #include "init_patch.h"
 #include "extra_patches.h"
 
-extern SEConfig* se_config;
+extern SEConfigARK* se_config;
 
 extern int (*_sctrlHENApplyMemory)(u32);
 extern int memoryHandlerVita(u32 p2);
