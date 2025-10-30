@@ -76,8 +76,13 @@ int flashLoadPatch(int cmd)
         strcat(archive, FLASH0_ARK);
         
         int fd = sceIoOpen(archive, PSP_O_RDONLY, 0777);
-        sceIoRead(fd, (void*)ARK_FLASH, MAX_FLASH0_SIZE);
-        sceIoClose(fd);
+        if (fd >= 0){
+            sceIoRead(fd, (void*)ARK_FLASH, MAX_FLASH0_SIZE);
+            sceIoClose(fd);
+        }
+        else {
+            memset((void*)ARK_FLASH, 0, 32);
+        }
 
         sctrlFlushCache();
     }
