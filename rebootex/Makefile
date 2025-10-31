@@ -19,13 +19,12 @@ LINKFILE = $(BOOTLOADEX)/linkfile.l
 
 REBOOT_OBJS = \
 	main.o \
-	lib.o \
 	pspbtcnf.o \
 	scanner.o \
 	patches_vita.o \
-	patches_vita_vpsp.o
+	patches_vita_vpsp.o \
 
-LIBS = -L $(ARKROOT)/libs
+LIBS = -L $(PSPSDK)/lib -lansic
 
 ifdef DEBUG
 CFLAGS += -DDEBUG=$(DEBUG)
